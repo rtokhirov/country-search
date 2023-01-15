@@ -1,18 +1,26 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     height: 100%;
     font-size: 62.5%;
+    box-sizing: border-box;
 }
 
 body {
+    box-sizing: border-box;
     height: 100%;
     background-color: rgb(75, 75, 214);
     display: flex;
-    /* flex-direction: column;
-    justify-content: center; */
     align-items: center;
     font-size: 1.6rem;
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+    // overflow: hidden;
+    padding: 1rem;
 }
 
 .main {
@@ -43,7 +51,6 @@ body {
         }
     }
     button {
-        // width: 10rem;
         height: 4rem;
         border: 0;
         padding: 0 3rem;
@@ -51,6 +58,11 @@ body {
         font-size: 1.8rem;
         color: #fff;
         background-color: blue;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(37, 37, 247);
+            opacity: 0.85;
+        }
         &:active {
             opacity: 0.6;
         }
@@ -78,5 +90,11 @@ body {
 }
 
 h1 {
+    margin: 1rem;
     text-align: center;
+    // box-shadow: 1px 1px 1px 1px red;
+}
+
+p {
+    margin-bottom: 1rem;
 }
