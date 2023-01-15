@@ -4,7 +4,7 @@ const form = document.querySelector('form')
 const inputSearch = document.querySelector('.inputSearch')
 let messageTxt = document.querySelector('.messageTxt')
 let countryName = ''
-
+const overlay = document.querySelector('.overlay')
 
 function getData(resource) {
     return new Promise((resolve, reject) => {
@@ -15,6 +15,8 @@ function getData(resource) {
                 resolve(data)
             } else if (request.readyState == 4) {
                 reject('Country name wrong :(')
+                overlay.classList.add('hidden')
+
             }
         })
         request.open('get', resource);
@@ -24,7 +26,7 @@ function getData(resource) {
 
 function getCountry(country) {
     getData(API + `${country}`).then((data) => {
-        console.log(data);
+        // console.log(data);
         data.forEach(item => {
             const {
                 flag,
@@ -71,9 +73,12 @@ let post = (flag, name, capital, region, population, currency, languages) => {
         <p><b>Currency:</b> ${curr}</p>
         <p><b>Common languages:</b> ${languages}</p>
     </div>`
+    overlay.classList.add('hidden')
+
 }
 
 form.addEventListener('submit', (e) => {
+    overlay.classList.remove('hidden')
     e.preventDefault()
     countryName = inputSearch.value.toLowerCase()
     getCountry(countryName)
